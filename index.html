@@ -71,7 +71,12 @@ function save(){localStorage.setItem('heiState',JSON.stringify(state));renderSta
 function renderStats(){stars.textContent=state.stars;coins.textContent=state.coins;abcProgress.style.width=(state.letters.length/26*100)+'%'}
 
 // ===== 語音 =====
-function speak(text,rate){rate=rate||.85;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=rate;speechSynthesis.speak(u)}
+// 選一個「英文語音」，避免手機（系統設中文）用中文語音念英文導致發音很怪
+let enVoice=null;
+function loadVoices(){try{const vs=speechSynthesis.getVoices();enVoice=vs.find(v=>/en[-_]US/i.test(v.lang)&&/samantha|siri|google|natural|enhanced|premium|karen|daniel|aaron|nicky/i.test(v.name))||vs.find(v=>/en[-_]US/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null}catch(e){}}
+loadVoices();
+try{speechSynthesis.addEventListener('voiceschanged',loadVoices)}catch(e){}
+function speak(text,rate){rate=rate||.85;if(!enVoice)loadVoices();speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='en-US';if(enVoice)u.voice=enVoice;u.rate=rate;u.pitch=1;speechSynthesis.speak(u)}
 // ===== 音效（不需音檔）=====
 let audioCtx=null;
 function beep(type){try{audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();const notes=type==='win'?[523,659,784]:[300,220];notes.forEach((f,i)=>{const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.frequency.value=f;o.type='sine';o.connect(g);g.connect(audioCtx.destination);const t=audioCtx.currentTime+i*0.11;g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(0.25,t+0.02);g.gain.exponentialRampToValueAtTime(0.0001,t+0.18);o.start(t);o.stop(t+0.2)})}catch(e){}}
@@ -181,8 +186,8 @@ function celebrate(icon,title,coins,text){if(coins){state.coins+=coins;save()}op
 // ===== 故事 =====
 let paused=false;
 function renderStory(){const s=stories[currentStory];storyTitle.textContent=s.title;storyPic.textContent=s.pic;let pos=0;storyText.innerHTML=s.text.split(' ').map(w=>{const sp=`<span class="w" data-o="${pos}">${w}</span>`;pos+=w.length+1;return sp}).join(' ')}
-function speakStory(rate){rate=rate||.8;const s=stories[currentStory];speechSynthesis.cancel();paused=false;updatePauseBtn();
-  const u=new SpeechSynthesisUtterance(s.text);u.lang='en-US';u.rate=rate;
+function speakStory(rate){rate=rate||.8;if(!enVoice)loadVoices();const s=stories[currentStory];speechSynthesis.cancel();paused=false;updatePauseBtn();
+  const u=new SpeechSynthesisUtterance(s.text);u.lang='en-US';if(enVoice)u.voice=enVoice;u.rate=rate;
   const spans=[...storyText.querySelectorAll('.w')],offs=spans.map(x=>+x.dataset.o);
   u.onboundary=e=>{if(e.name&&e.name!=='word')return;let idx=0;for(let i=0;i<offs.length;i++){if(e.charIndex>=offs[i])idx=i;else break}spans.forEach(x=>x.classList.remove('highlight'));if(spans[idx])spans[idx].classList.add('highlight')};
   u.onend=()=>{spans.forEach(x=>x.classList.remove('highlight'));paused=false;updatePauseBtn()};
