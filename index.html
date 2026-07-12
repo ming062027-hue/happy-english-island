@@ -7,68 +7,206 @@
 <style>
 :root{--blue:#5b8def;--yellow:#ffd75e;--pink:#ff88ae;--green:#64d6a3;--purple:#9a7cf7;--ink:#24324a;--paper:#fffdf7;--soft:#eef6ff;--shadow:0 10px 28px rgba(53,77,120,.14)}
 *{box-sizing:border-box} body{margin:0;font-family:"Arial Rounded MT Bold","Noto Sans TC",system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,#dff3ff 0,#fff8df 100%);min-height:100vh}
-button{font:inherit;cursor:pointer;border:0}.app{max-width:1180px;margin:auto;padding:16px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border-radius:24px;padding:12px 18px;box-shadow:var(--shadow);position:sticky;top:8px;z-index:20}.brand{display:flex;align-items:center;gap:10px}.logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,var(--yellow),var(--pink));display:grid;place-items:center;font-size:28px}.brand h1{font-size:20px;margin:0}.brand small{display:block;color:#65738b}.stats{display:flex;gap:9px;flex-wrap:wrap}.pill{background:var(--soft);padding:9px 12px;border-radius:999px;font-size:14px}.nav{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin:16px 0}.nav button{background:white;border-radius:16px;padding:13px 8px;box-shadow:0 5px 16px rgba(0,0,0,.08);color:var(--ink)}.nav button.active{background:var(--blue);color:white;transform:translateY(-2px)}
+button{font:inherit;cursor:pointer;border:0}.app{max-width:1180px;margin:auto;padding:16px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border-radius:24px;padding:12px 18px;box-shadow:var(--shadow)}.brand{display:flex;align-items:center;gap:10px}.logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,var(--yellow),var(--pink));display:grid;place-items:center;font-size:28px}.brand h1{font-size:20px;margin:0}.brand small{display:block;color:#65738b}.stats{display:flex;gap:9px;flex-wrap:wrap}.pill{background:var(--soft);padding:9px 12px;border-radius:999px;font-size:14px}.nav{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin:16px 0}.nav button{background:white;border-radius:16px;padding:13px 8px;box-shadow:0 5px 16px rgba(0,0,0,.08);color:var(--ink)}.nav button.active{background:var(--blue);color:white;transform:translateY(-2px)}
 .hero{display:grid;grid-template-columns:1.35fr .65fr;gap:18px;background:linear-gradient(135deg,#fff 10%,#fff3bb);border-radius:30px;padding:28px;box-shadow:var(--shadow);overflow:hidden}.hero h2{font-size:clamp(30px,5vw,58px);line-height:1.05;margin:0 0 12px}.hero p{font-size:18px;line-height:1.7}.cta{background:var(--blue);color:white;border-radius:16px;padding:14px 22px;box-shadow:0 7px 0 #376ac6}.mascot{font-size:145px;display:grid;place-items:center;animation:float 2.3s ease-in-out infinite}@keyframes float{50%{transform:translateY(-12px) rotate(3deg)}}
-.section{display:none}.section.active{display:block}.section-title{margin:24px 4px 12px;font-size:27px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:white;border-radius:22px;padding:18px;box-shadow:var(--shadow)}.lesson-card{text-align:center;transition:.2s}.lesson-card:hover{transform:translateY(-5px)}.letter{font-size:54px;color:var(--blue)}.emoji{font-size:52px}.word{font-size:23px;margin:5px}.sound{background:#edf5ff;border-radius:12px;padding:8px 12px}.progress{height:13px;background:#e5edf6;border-radius:999px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--blue));width:0;transition:.4s}.panel{background:white;border-radius:25px;padding:22px;box-shadow:var(--shadow)}
+.section{display:none}.section.active{display:block}.section-title{margin:24px 4px 12px;font-size:27px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:white;border-radius:22px;padding:18px;box-shadow:var(--shadow)}.lesson-card{text-align:center;transition:.2s;cursor:pointer}.lesson-card:hover{transform:translateY(-5px)}.letter{font-size:54px;color:var(--blue)}.emoji{font-size:52px}.word{font-size:23px;margin:5px}.sound{background:#edf5ff;border-radius:12px;padding:8px 12px}.progress{height:13px;background:#e5edf6;border-radius:999px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--blue));width:0;transition:.4s}.panel{background:white;border-radius:25px;padding:22px;box-shadow:var(--shadow)}
 .phonics-row{display:grid;grid-template-columns:130px 1fr auto;align-items:center;gap:15px;margin:12px 0;padding:14px;background:#f8fbff;border-radius:18px}.phoneme{font-size:34px;color:var(--purple)}
-.games{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.game-card{min-height:180px;display:flex;flex-direction:column;justify-content:space-between}.game-card .icon{font-size:50px}.game-card button,.primary{background:var(--green);color:#143d2d;padding:11px 16px;border-radius:13px}.game-area{margin-top:18px;background:#fff;border-radius:25px;padding:22px;box-shadow:var(--shadow);min-height:290px}.choices{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:20px}.choice{background:#f2f7ff;border:3px solid transparent;border-radius:17px;padding:16px 22px;font-size:22px}.choice:hover{border-color:var(--blue)}.big-prompt{text-align:center;font-size:64px;margin:22px}.feedback{text-align:center;font-size:22px;min-height:35px}.story-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px}.story-picture{background:linear-gradient(135deg,#b8e8ff,#ffe3a1);border-radius:25px;display:grid;place-items:center;font-size:150px;min-height:360px}.story-text{font-size:21px;line-height:1.85}.highlight{background:#fff3a6;border-radius:6px}.reward-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.badge{text-align:center;filter:grayscale(1);opacity:.45}.badge.unlocked{filter:none;opacity:1}.badge-icon{font-size:65px}.daily{background:linear-gradient(135deg,#7866ef,#a691ff);color:white}.parent-table{width:100%;border-collapse:collapse}.parent-table td,.parent-table th{padding:12px;border-bottom:1px solid #e5eaf0;text-align:left}.tips li{margin:10px 0;line-height:1.6}.footer{text-align:center;padding:28px;color:#68758a}.modal{position:fixed;inset:0;background:rgba(28,38,58,.55);display:none;place-items:center;z-index:50;padding:15px}.modal.open{display:grid}.modal-box{background:white;border-radius:28px;padding:28px;max-width:460px;width:100%;text-align:center;animation:pop .25s ease}@keyframes pop{from{transform:scale(.8);opacity:0}}.modal-icon{font-size:85px}.close{background:var(--blue);color:white;border-radius:14px;padding:12px 24px}.confetti{position:fixed;font-size:28px;animation:fall 1.7s linear forwards;z-index:60}@keyframes fall{to{transform:translateY(100vh) rotate(540deg);opacity:0}}
-@media(max-width:800px){.hero,.story-layout{grid-template-columns:1fr}.mascot{font-size:100px}.grid{grid-template-columns:repeat(2,1fr)}.games{grid-template-columns:1fr 1fr}.reward-grid{grid-template-columns:repeat(2,1fr)}.nav{grid-template-columns:repeat(3,1fr)}.topbar{align-items:flex-start;flex-direction:column}.phonics-row{grid-template-columns:85px 1fr}.phonics-row button{grid-column:1/-1}}
+.games{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.game-card{min-height:180px;display:flex;flex-direction:column;justify-content:space-between}.game-card .icon{font-size:50px}.game-card button,.primary{background:var(--green);color:#143d2d;padding:11px 16px;border-radius:13px}.game-area{margin-top:18px;background:#fff;border-radius:25px;padding:22px;box-shadow:var(--shadow);min-height:290px}.gbar{display:flex;justify-content:space-between;align-items:center;font-size:18px;font-weight:bold;background:var(--soft);border-radius:14px;padding:10px 16px}.choices{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:20px}.choice{background:#f2f7ff;border:3px solid transparent;border-radius:17px;padding:16px 22px;font-size:22px;transition:.15s;-webkit-tap-highlight-color:transparent}@media(hover:hover){.choice:hover{border-color:var(--blue)}}.choice.ok{background:#c9f7df;border-color:var(--green);transform:scale(1.05)}.choice.no{background:#ffd6df;border-color:var(--pink)}.big-prompt{text-align:center;font-size:64px;margin:22px}.feedback{text-align:center;font-size:22px;min-height:35px}
+.story-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px}.story-picture{background:linear-gradient(135deg,#b8e8ff,#ffe3a1);border-radius:25px;display:grid;place-items:center;font-size:150px;min-height:360px}.story-text{font-size:21px;line-height:1.95}.w{padding:1px 3px;border-radius:6px}.highlight{background:#ffe03d;border-radius:6px}.story-ctrl{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.story-ctrl button{background:var(--green);color:#143d2d;padding:12px 16px;border-radius:13px;font-size:16px}
+.theme-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}.theme-tabs button{background:#fff;border-radius:14px;padding:10px 14px;box-shadow:0 4px 12px rgba(0,0,0,.07);font-size:15px;color:var(--ink)}.theme-tabs button.on{background:var(--purple);color:#fff}.tcard{text-align:center;cursor:pointer;transition:.2s}.tcard:active{transform:scale(.95)}.tcard .zh{color:#65738b;font-size:16px;margin-top:2px}.fab{position:fixed;right:16px;bottom:16px;bottom:calc(16px + env(safe-area-inset-bottom));width:58px;height:58px;border-radius:50%;background:var(--blue);color:#fff;font-size:30px;font-weight:bold;line-height:1;box-shadow:0 8px 22px rgba(53,77,120,.4);display:grid;place-items:center;z-index:45;opacity:0;pointer-events:none;transform:translateY(20px) scale(.8);transition:.25s;-webkit-tap-highlight-color:transparent}.fab.show{opacity:1;pointer-events:auto;transform:none}.fab:active{transform:scale(.9)}.footer{text-align:center;padding:28px;color:#68758a}.modal{position:fixed;inset:0;background:rgba(28,38,58,.55);display:none;place-items:center;z-index:50;padding:15px}.modal.open{display:grid}.modal-box{background:white;border-radius:28px;padding:28px;max-width:460px;width:100%;text-align:center;animation:pop .25s ease}@keyframes pop{from{transform:scale(.8);opacity:0}}.modal-icon{font-size:85px}.close{background:var(--blue);color:white;border-radius:14px;padding:12px 24px}.confetti{position:fixed;font-size:28px;animation:fall 1.7s linear forwards;z-index:60}@keyframes fall{to{transform:translateY(100vh) rotate(540deg);opacity:0}}
+@media(max-width:800px){.hero,.story-layout{grid-template-columns:1fr}.mascot{font-size:100px}.grid{grid-template-columns:repeat(2,1fr)}.games{grid-template-columns:1fr 1fr}.nav{grid-template-columns:repeat(3,1fr)}.topbar{align-items:flex-start;flex-direction:column}.phonics-row{grid-template-columns:85px 1fr}.phonics-row button{grid-column:1/-1}}
 @media(max-width:480px){.games,.grid{grid-template-columns:1fr}.app{padding:9px}.hero{padding:20px}.nav button{font-size:13px}.story-picture{font-size:100px;min-height:220px}}
 </style>
 </head>
 <body>
 <div class="app">
-<header class="topbar"><div class="brand"><div class="logo">🦊</div><div><h1>Happy English Island</h1><small>小學生英文冒險島</small></div></div><div class="stats"><span class="pill">⭐ <b id="stars">0</b></span><span class="pill">🪙 <b id="coins">0</b></span><span class="pill">🔥 連續 <b id="streak">1</b> 天</span></div></header>
-<nav class="nav" id="nav"><button class="active" data-page="home">🏠 首頁</button><button data-page="abc">🔤 ABC</button><button data-page="phonics">🔊 自然發音</button><button data-page="games">🎮 遊戲</button><button data-page="stories">📖 故事</button><button data-page="rewards">🏆 獎勵</button></nav>
+<header class="topbar"><div class="brand"><div class="logo">🦊</div><div><h1>Happy English Island</h1><small>小學生英文冒險島</small></div></div><div class="stats"><span class="pill">⭐ <b id="stars">0</b></span><span class="pill">🪙 <b id="coins">0</b></span></div></header>
+<nav class="nav" id="nav"><button class="active" data-page="home">🏠 首頁</button><button data-page="abc">🔤 ABC</button><button data-page="phonics">🔊 自然發音</button><button data-page="themes">🗂️ 主題單字</button><button data-page="games">🎮 遊戲</button><button data-page="stories">📖 故事</button></nav>
 
-<section id="home" class="section active"><div class="hero"><div><span class="pill">今天的任務：學 5 個單字＋玩 1 個遊戲</span><h2>Play, Speak,<br>and Love English!</h2><p>跟著狐狸老師 Foxy，到字母森林、聲音山谷和故事城堡冒險。每天只要 10 分鐘，英文就會一天比一天厲害！</p><button class="cta" onclick="go('abc')">開始今天的冒險 🚀</button></div><div class="mascot">🦊</div></div><h2 class="section-title">今天的學習地圖</h2><div class="grid"><div class="card"><h3>1. 字母暖身 🔤</h3><p>認識 A–Z、大小寫與生活單字。</p><div class="progress"><i style="width:25%"></i></div></div><div class="card"><h3>2. 發音任務 🔊</h3><p>聽聲音、跟著念、找出相同音。</p><div class="progress"><i style="width:10%"></i></div></div><div class="card"><h3>3. 遊戲挑戰 🎮</h3><p>八種小遊戲，邊玩邊複習。</p><div class="progress"><i style="width:0%"></i></div></div><div class="card daily"><h3>每日寶箱 🎁</h3><p>完成三個任務即可開箱，獲得 30 金幣！</p><button class="primary" onclick="dailyChest()">查看寶箱</button></div></div></section>
+<section id="home" class="section active"><div class="hero"><div><span class="pill">今天的任務：學 5 個單字＋玩 1 個遊戲</span><h2>Play, Speak,<br>and Love English!</h2><p>跟著狐狸老師 Foxy，到字母森林、聲音山谷和故事城堡冒險。每天只要 10 分鐘，英文就會一天比一天厲害！</p><button class="cta" onclick="go('abc')">開始今天的冒險 🚀</button></div><div class="mascot">🦊</div></div><h2 class="section-title">今天的學習地圖</h2><div class="grid"><div class="card lesson-card" onclick="go('abc')"><div class="emoji">🔤</div><h3>字母暖身</h3><p>認識 A–Z、大小寫與生活單字。</p></div><div class="card lesson-card" onclick="go('phonics')"><div class="emoji">🔊</div><h3>發音任務</h3><p>聽聲音、跟著念、找出相同音。</p></div><div class="card lesson-card" onclick="go('games')"><div class="emoji">🎮</div><h3>遊戲挑戰</h3><p>八種小遊戲，邊玩邊複習。</p></div><div class="card lesson-card" onclick="go('stories')"><div class="emoji">📖</div><h3>故事城堡</h3><p>會說話的故事，逐字跟著念。</p></div></div></section>
 
-<section id="abc" class="section"><h2 class="section-title">ABC 字母與單字樂園</h2><div class="panel"><p>點擊卡片聽標準英文發音。每學會一個字母，就會獲得 1 顆星。</p><div class="progress"><i id="abcProgress"></i></div></div><div class="grid" id="abcGrid" style="margin-top:15px"></div></section>
+<section id="abc" class="section"><h2 class="section-title">ABC 字母與單字樂園</h2><div class="panel"><p>點擊卡片聽標準英文發音，跟著大聲念一次。</p><div class="progress"><i id="abcProgress"></i></div></div><div class="grid" id="abcGrid" style="margin-top:15px"></div></section>
 
 <section id="phonics" class="section"><h2 class="section-title">自然發音 Phonics</h2><div class="panel"><p>先聽「字母音」，再聽例字。鼓勵孩子大聲跟讀三次。</p><div id="phonicsList"></div></div></section>
 
-<section id="games" class="section"><h2 class="section-title">英文遊戲城堡（8 種遊戲）</h2><div class="games" id="gameCards"></div><div class="game-area" id="gameArea"><div class="big-prompt">🎮</div><p class="feedback">選一個遊戲開始挑戰吧！每答對一題可獲得星星和金幣。</p></div></section>
+<section id="themes" class="section"><h2 class="section-title">主題單字樂園</h2><div class="panel"><p>點卡片聽發音、看中文。這裡的單字也會出現在遊戲裡，玩越多認得越多！</p></div><div class="theme-tabs" id="themeTabs"></div><div class="grid" id="themeGrid"></div></section>
 
-<section id="stories" class="section"><h2 class="section-title">會說話的故事城堡</h2><div class="story-layout"><div class="story-picture" id="storyPic">🐻🌈</div><div class="card"><h2 id="storyTitle">Benny and the Rainbow</h2><div class="story-text" id="storyText">Benny is a little bear. He sees a <span class="highlight">red</span> apple, an <span class="highlight">orange</span> kite, and a <span class="highlight">yellow</span> sun. “Wow! The world is a rainbow!” says Benny. He shares the apple with his friend Mia. They smile and play together.</div><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="primary" onclick="speakStory()">🔊 聽故事</button><button class="primary" onclick="storyQuiz()">🧠 故事小測驗</button><button class="primary" onclick="nextStory()">➡️ 下一個故事</button></div></div></div></section>
+<section id="games" class="section"><h2 class="section-title">英文遊戲城堡（8 種遊戲）</h2><div class="games" id="gameCards"></div><div class="game-area" id="gameArea"><div class="big-prompt">🎮</div><p class="feedback">選一個遊戲開始挑戰吧！答對會有音效和星星，一輪玩完有慶祝喔！</p></div></section>
 
-<section id="rewards" class="section"><h2 class="section-title">我的獎勵屋</h2><div class="reward-grid" id="badges"></div><h2 class="section-title">家長學習報告</h2><div class="panel"><table class="parent-table"><tr><th>項目</th><th>目前成果</th><th>建議</th></tr><tr><td>已學字母</td><td id="reportLetters">0 / 26</td><td>每天複習 5 個字母</td></tr><tr><td>遊戲答對</td><td id="reportCorrect">0 題</td><td>錯題隔天再挑戰</td></tr><tr><td>故事閱讀</td><td id="reportStories">0 次</td><td>聽完後用中文說出故事內容</td></tr><tr><td>累積學習</td><td id="reportTime">0 分鐘</td><td>每次 10–15 分鐘最剛好</td></tr></table></div><h2 class="section-title">更多有效學習方式</h2><div class="panel tips"><ul><li><b>跟讀錄音：</b>孩子先聽、再模仿，最後錄下自己的聲音比較。</li><li><b>情境任務：</b>在家找出 5 個英文物品，例如 door、book、cup。</li><li><b>間隔複習：</b>新單字在第 1、2、4、7 天再次出現。</li><li><b>可理解輸入：</b>故事先看圖猜意思，再聽英文，不急著逐字翻譯。</li><li><b>親子挑戰：</b>家長和孩子輪流說單字，答不出來就做可愛動作。</li></ul></div></section>
-<div class="footer">Happy English Island Prototype · 適合國小低至中年級 · 建議家長陪伴首次操作</div>
+<section id="stories" class="section"><h2 class="section-title">會說話的故事城堡</h2><div class="story-layout"><div class="story-picture" id="storyPic">🐻🌈</div><div class="card"><h2 id="storyTitle">Benny and the Rainbow</h2><div class="story-text" id="storyText"></div><div class="story-ctrl"><button onclick="speakStory(.8)">▶️ 播放</button><button onclick="togglePause()" id="pauseBtn">⏸️ 暫停</button><button onclick="stopStory()">⏹️ 停止</button><button onclick="speakStory(.55)">🐢 慢慢聽</button><button onclick="prevStory()">⬅️ 上一篇</button><button onclick="nextStory()">➡️ 下一篇</button><button onclick="storyQuiz()">🧠 小測驗</button></div></div></div></section>
+
+<div class="footer">Happy English Island · 適合國小低至中年級 · 建議家長陪伴首次操作</div>
 </div>
+<button class="fab" id="toTop" aria-label="回到最上面" title="回到最上面" onclick="goTop()"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V6"/><path d="M6 12l6-6 6 6"/></svg></button>
 <div class="modal" id="modal"><div class="modal-box"><div class="modal-icon" id="modalIcon">🏆</div><h2 id="modalTitle">太棒了！</h2><p id="modalText"></p><button class="close" onclick="closeModal()">繼續冒險</button></div></div>
+
 <script>
 const alphabet=[['A','apple','🍎'],['B','ball','⚽'],['C','cat','🐱'],['D','dog','🐶'],['E','egg','🥚'],['F','fish','🐟'],['G','gift','🎁'],['H','hat','🎩'],['I','ice cream','🍦'],['J','juice','🧃'],['K','kite','🪁'],['L','lion','🦁'],['M','moon','🌙'],['N','nest','🪺'],['O','orange','🍊'],['P','pig','🐷'],['Q','queen','👑'],['R','robot','🤖'],['S','sun','☀️'],['T','tiger','🐯'],['U','umbrella','☂️'],['V','violin','🎻'],['W','whale','🐳'],['X','xylophone','🎼'],['Y','yo-yo','🪀'],['Z','zebra','🦓']];
-const phonics=[['/æ/','A: apple, ant','apple'],['/b/','B: ball, bus','ball'],['/k/','C: cat, cup','cat'],['/d/','D: dog, duck','dog'],['/e/','E: egg, elephant','egg'],['/f/','F: fish, fan','fish'],['/g/','G: goat, game','goat'],['/h/','H: hat, hand','hat'],['/ɪ/','I: ink, insect','ink'],['/dʒ/','J: jam, jump','jump'],['/ʃ/','SH: ship, shop','ship'],['/tʃ/','CH: chair, cheese','chair'],['/θ/','TH: three, thumb','three']];
-let state=JSON.parse(localStorage.getItem('heiState')||'{"stars":0,"coins":0,"letters":[],"correct":0,"stories":0,"minutes":0,"games":[]}');
+const phonics=[['/æ/','A: apple, ant','apple'],['/b/','B: ball, bus','ball'],['/k/','C: cat, cup','cat'],['/d/','D: dog, duck','dog'],['/e/','E: egg, elephant','egg'],['/f/','F: fish, fan','fish'],['/g/','G: goat, game','goat'],['/h/','H: hat, hand','hat'],['/ɪ/','I: ink, insect','ink'],['/dʒ/','J: jam, jump','jump'],['/k/','K: key, king','key'],['/l/','L: lion, leaf','lion'],['/m/','M: moon, milk','moon'],['/n/','N: nest, nose','nest'],['/ɒ/','O: orange, ox','orange'],['/p/','P: pig, pen','pig'],['/kw/','Q: queen, quick','queen'],['/r/','R: robot, red','robot'],['/s/','S: sun, sock','sun'],['/t/','T: tiger, top','tiger'],['/ʌ/','U: umbrella, up','umbrella'],['/v/','V: violin, van','violin'],['/w/','W: whale, water','whale'],['/j/','Y: yo-yo, yes','yes'],['/z/','Z: zebra, zoo','zebra'],['/ʃ/','SH: ship, shop','ship'],['/tʃ/','CH: chair, cheese','chair'],['/θ/','TH: three, thumb','three']];
+const sentences=['I like apples.','The cat is big.','I can jump high.','She has a red ball.','We go to school.','The sun is hot.','I see a blue fish.'];
+// 主題單字（參考 Starfall / ABCya 的分類單字模式）：[英文, emoji, 中文]
+const themes=[
+ {name:'動物',icon:'🐾',words:[['cat','🐱','貓'],['dog','🐶','狗'],['bird','🐦','鳥'],['fish','🐟','魚'],['lion','🦁','獅子'],['bear','🐻','熊'],['monkey','🐵','猴子'],['elephant','🐘','大象'],['rabbit','🐰','兔子'],['tiger','🐯','老虎'],['duck','🦆','鴨子'],['frog','🐸','青蛙']]},
+ {name:'食物',icon:'🍎',words:[['apple','🍎','蘋果'],['banana','🍌','香蕉'],['bread','🍞','麵包'],['egg','🥚','蛋'],['milk','🥛','牛奶'],['rice','🍚','飯'],['cake','🍰','蛋糕'],['fish','🐟','魚'],['meat','🍖','肉'],['water','💧','水']]},
+ {name:'顏色',icon:'🌈',words:[['red','🔴','紅色'],['blue','🔵','藍色'],['yellow','🟡','黃色'],['green','🟢','綠色'],['orange','🟠','橘色'],['purple','🟣','紫色'],['pink','🌸','粉紅'],['black','⚫','黑色'],['white','⚪','白色'],['brown','🟤','棕色']]},
+ {name:'數字',icon:'🔢',words:[['one','1️⃣','一'],['two','2️⃣','二'],['three','3️⃣','三'],['four','4️⃣','四'],['five','5️⃣','五'],['six','6️⃣','六'],['seven','7️⃣','七'],['eight','8️⃣','八'],['nine','9️⃣','九'],['ten','🔟','十']]},
+ {name:'身體',icon:'🧍',words:[['head','🙂','頭'],['eye','👁️','眼睛'],['ear','👂','耳朵'],['nose','👃','鼻子'],['mouth','👄','嘴巴'],['hand','✋','手'],['foot','🦶','腳'],['hair','💇','頭髮'],['leg','🦵','腿'],['arm','💪','手臂']]},
+ {name:'家庭',icon:'👨‍👩‍👧',words:[['mom','👩','媽媽'],['dad','👨','爸爸'],['baby','👶','寶寶'],['sister','👧','姊妹'],['brother','👦','兄弟'],['grandma','👵','奶奶'],['grandpa','👴','爺爺'],['family','👪','家人']]},
+ {name:'交通',icon:'🚗',words:[['car','🚗','汽車'],['bus','🚌','公車'],['bike','🚲','腳踏車'],['train','🚂','火車'],['plane','✈️','飛機'],['boat','⛵','船'],['truck','🚚','卡車']]},
+ {name:'天氣',icon:'☀️',words:[['sun','☀️','太陽'],['rain','🌧️','雨'],['cloud','☁️','雲'],['snow','❄️','雪'],['wind','💨','風'],['rainbow','🌈','彩虹'],['star','⭐','星星'],['moon','🌙','月亮']]}
+];
+// 遊戲用的大單字庫（去重）：[英文, emoji]
+const wordBank=(function(){const m=new Map();alphabet.forEach(x=>m.set(x[1],[x[1],x[2]]));themes.forEach(t=>t.words.forEach(w=>m.set(w[0],[w[0],w[1]])));return [...m.values()]})();
+const stories=[
+ {title:'Benny and the Rainbow',pic:'🐻🌈',text:'Benny is a little bear. He sees a red apple, an orange kite, and a yellow sun. Wow! The world is a rainbow, says Benny. He shares the apple with his friend Mia. They smile and play together.',q:'What fruit does Benny see?',a:'apple',opts:['apple','banana','grape']},
+ {title:'Luna and the Lost Star',pic:'🐰⭐',text:'Luna the rabbit finds a little star under a tree. The star is sad because it cannot fly home. Luna climbs a hill and holds the star up high. The moon pulls it back into the sky. Thank you, Luna! the star shines.',q:'Where is the star?',a:'under a tree',opts:['under a tree','in a box','on a boat']},
+ {title:'Max Makes Breakfast',pic:'🐶🍳',text:'Max the dog makes breakfast for Dad. He puts bread, eggs, and milk on the table. Oh no! The milk spills. Max cleans it up and Dad says, Good job, Max!',q:'What spills?',a:'milk',opts:['milk','juice','water']},
+ {title:'Tina the Turtle',pic:'🐢🌊',text:'Tina is a small turtle. She swims in the blue sea. She sees a big fish and a happy crab. Hello! says Tina. They play in the water all day and watch the sun go down.',q:'Where does Tina swim?',a:'in the sea',opts:['in the sea','in a cup','on a bed']},
+ {title:'Sam and the Kite',pic:'👦🪁',text:'Sam has a red kite. The wind is strong today. The kite flies high in the sky. Look at my kite! says Sam. His dog runs and barks happily under the big kite.',q:'What color is the kite?',a:'red',opts:['red','blue','green']}
+];
 let currentStory=0;
-const stories=[{title:'Benny and the Rainbow',pic:'🐻🌈',text:'Benny is a little bear. He sees a red apple, an orange kite, and a yellow sun. “Wow! The world is a rainbow!” says Benny. He shares the apple with his friend Mia. They smile and play together.',q:'What fruit does Benny see?',a:'apple',opts:['apple','banana','grape']},{title:'Luna’s Lost Star',pic:'🐰⭐',text:'Luna the rabbit finds a little star under a tree. The star is sad because it cannot fly home. Luna climbs a hill and holds the star high. The moon pulls it back into the sky. “Thank you, Luna!” the star shines.',q:'Where is the star?',a:'under a tree',opts:['under a tree','in a box','on a boat']},{title:'Max Makes Breakfast',pic:'🐶🍳',text:'Max the dog makes breakfast for Dad. He puts bread, eggs, and milk on the table. Oh no! The milk spills. Max cleans it up and Dad says, “Good job, Max!”',q:'What spills?',a:'milk',opts:['milk','juice','water']}];
+let state=JSON.parse(localStorage.getItem('heiState')||'{"stars":0,"coins":0,"letters":[]}');
+if(!state.letters)state.letters=[];
 function save(){localStorage.setItem('heiState',JSON.stringify(state));renderStats()}
-function renderStats(){stars.textContent=state.stars;coins.textContent=state.coins;abcProgress.style.width=(state.letters.length/26*100)+'%';reportLetters.textContent=state.letters.length+' / 26';reportCorrect.textContent=state.correct+' 題';reportStories.textContent=state.stories+' 次';reportTime.textContent=state.minutes+' 分鐘';renderBadges()}
-function speak(text,rate=.85){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=rate;speechSynthesis.speak(u)}
-function go(page){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(page).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));scrollTo({top:0,behavior:'smooth'})}
+function renderStats(){stars.textContent=state.stars;coins.textContent=state.coins;abcProgress.style.width=(state.letters.length/26*100)+'%'}
+
+// ===== 語音 =====
+function speak(text,rate){rate=rate||.85;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=rate;speechSynthesis.speak(u)}
+// ===== 音效（不需音檔）=====
+let audioCtx=null;
+function beep(type){try{audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();const notes=type==='win'?[523,659,784]:[300,220];notes.forEach((f,i)=>{const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.frequency.value=f;o.type='sine';o.connect(g);g.connect(audioCtx.destination);const t=audioCtx.currentTime+i*0.11;g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(0.25,t+0.02);g.gain.exponentialRampToValueAtTime(0.0001,t+0.18);o.start(t);o.stop(t+0.2)})}catch(e){}}
+
+// ===== 換頁（切頁一律停止朗讀）=====
+function go(page){speechSynthesis.cancel();document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(page).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));scrollTo({top:0,behavior:'smooth'})}
 document.getElementById('nav').onclick=e=>{if(e.target.dataset.page)go(e.target.dataset.page)};
-function learnLetter(l,w){speak(l+', '+w);if(!state.letters.includes(l)){state.letters.push(l);state.stars++;state.coins+=2;state.minutes+=1;save()}}
+
+// ===== ABC =====
+function learnLetter(l,w){speak(l+', '+w);if(!state.letters.includes(l)){state.letters.push(l);state.stars++;state.coins++;save()}}
 abcGrid.innerHTML=alphabet.map(x=>`<div class="card lesson-card" onclick="learnLetter('${x[0]}','${x[1]}')"><div class="letter">${x[0]} ${x[0].toLowerCase()}</div><div class="emoji">${x[2]}</div><div class="word">${x[1]}</div><button class="sound">🔊 聽發音</button></div>`).join('');
-phonicsList.innerHTML=phonics.map(x=>`<div class="phonics-row"><div class="phoneme">${x[0]}</div><div><b>${x[1]}</b><br><small>嘴巴看清楚，慢慢跟念 3 次</small></div><button class="primary" onclick="speak('${x[2]}');rewardTiny()">播放 🔊</button></div>`).join('');
-function rewardTiny(){state.minutes+=1;save()}
-const gameDefs=[['字母配對','🔤','找出指定的大寫或小寫字母'],['圖片猜字','🖼️','看圖片選出正確英文單字'],['拼字高手','🧩','把打亂的字母拼成單字'],['聽音選字','👂','聽英文後選出正確單字'],['記憶翻牌','🃏','配對圖片與英文單字'],['句子火車','🚂','把單字排成正確句子'],['故事問答','📚','讀短句並回答問題'],['閃電挑戰','⚡','30 秒快速答題挑戰']];
+phonicsList.innerHTML=phonics.map(x=>`<div class="phonics-row"><div class="phoneme">${x[0]}</div><div><b>${x[1]}</b><br><small>嘴巴看清楚，慢慢跟念 3 次</small></div><button class="primary" onclick="speak('${x[2]}')">播放 🔊</button></div>`).join('');
+// 主題單字
+let curTheme=0;
+function renderThemeTabs(){themeTabs.innerHTML=themes.map((t,i)=>`<button class="${i===curTheme?'on':''}" onclick="selectTheme(${i})">${t.icon} ${t.name}</button>`).join('')}
+function selectTheme(i){curTheme=i;renderThemeTabs();themeGrid.innerHTML=themes[i].words.map(w=>`<div class="card lesson-card tcard" onclick="speak('${esc(w[0])}');this.style.transform='scale(1.06)';setTimeout(()=>this.style.transform='',200)"><div class="emoji">${w[1]}</div><div class="word">${w[0]}</div><div class="zh">${w[2]}</div></div>`).join('')}
+renderThemeTabs();selectTheme(0);
+
+// ===== 遊戲 =====
+const praises=['答對了！你很認真喔！ 🎉','太好了！你有仔細聽！ ✨','做得好！繼續加油！ 🌟','很棒！你越來越厲害了！ 🚀'];
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function pickWords(ex,n){return shuffle(wordBank.map(x=>x[0]).filter(x=>x!==ex)).slice(0,n)}
+function pickLetters(ex,n){return shuffle('abcdefghijklmnopqrstuvwxyz'.split('').filter(x=>x!==ex)).slice(0,n)}
+const spellPool=wordBank.filter(x=>/^[a-z]{2,6}$/.test(x[0]));
+const gameDefs=[['字母配對','🔤','找出指定字母的小寫'],['圖片猜字','🖼️','看圖片選出正確英文單字'],['拼字高手','🧩','把打亂的字母拼成單字'],['聽音選字','👂','聽英文後選出正確單字'],['記憶翻牌','🃏','配對圖片與英文單字'],['句子火車','🚂','把單字排成正確句子'],['故事問答','📚','讀故事並回答問題'],['閃電挑戰','⚡','30 秒快速答題挑戰']];
 gameCards.innerHTML=gameDefs.map((g,i)=>`<div class="card game-card"><div><div class="icon">${g[1]}</div><h3>${i+1}. ${g[0]}</h3><p>${g[2]}</p></div><button onclick="startGame(${i})">開始遊戲</button></div>`).join('');
+
+const GOAL=8;
+let round={score:0,n:0,type:0};
 let answer='';
-function startGame(i){state.minutes+=2;save();const a=alphabet[Math.floor(Math.random()*alphabet.length)];if(i===0){answer=a[0].toLowerCase();showGame(`找出 <b>${a[0]}</b> 的小寫字母`,shuffle([answer,...pickLetters(answer,3)]),answer)}else if(i===1){answer=a[1];showGame(`<span style="font-size:80px">${a[2]}</span><br>這是什麼？`,shuffle([answer,...pickWords(answer,3)]),answer)}else if(i===2){answer=a[1];const scrambled=shuffle(answer.split('')).join(' · ');gameArea.innerHTML=`<div class="big-prompt">${scrambled}</div><p class="feedback">請輸入正確單字</p><div style="text-align:center"><input id="spell" style="font-size:24px;padding:12px;border-radius:12px;border:2px solid #aac4ef"><button class="primary" onclick="checkSpell()">送出</button></div>`}else if(i===3){answer=a[1];speak(answer);showGame('👂 聽一聽，選出你聽到的單字',shuffle([answer,...pickWords(answer,3)]),answer)}else if(i===4){memoryGame()}else if(i===5){sentenceGame()}else if(i===6){storyQuiz()}else{speedGame()}}
-function showGame(prompt,opts,ans){answer=ans;gameArea.innerHTML=`<div class="big-prompt" style="font-size:38px">${prompt}</div><div class="choices">${opts.map(o=>`<button class="choice" onclick="check('${o.replaceAll("'","\\'")}')">${o}</button>`).join('')}</div><p class="feedback" id="feedback">選一個答案</p>`}
-function check(v){if(v===answer){win('答對了！You got it! 🎉')}else{feedback.textContent='再想一想！聽一次提示吧 🔊';speak(answer)}}
-function checkSpell(){if(spell.value.trim().toLowerCase()===answer)win('拼字成功！Great spelling! ✨');else{speak(answer);spell.value=''}}
-function win(msg){state.stars+=2;state.coins+=5;state.correct++;save();modalTitle.textContent='太棒了！';modalText.textContent=msg+' 獲得 ⭐2 ＋ 🪙5';modalIcon.textContent='🏆';modal.classList.add('open');confetti()}
-function pickWords(ex,n){return shuffle(alphabet.map(x=>x[1]).filter(x=>x!==ex)).slice(0,n)}function pickLetters(ex,n){return shuffle('abcdefghijklmnopqrstuvwxyz'.split('').filter(x=>x!==ex)).slice(0,n)}function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
-function memoryGame(){const pair=shuffle(alphabet).slice(0,3);let cards=shuffle(pair.flatMap(x=>[{k:x[1],v:x[1]},{k:x[1],v:x[2]}]));let first=null,matched=0;gameArea.innerHTML=`<p class="feedback">翻出相同的圖片與單字</p><div class="choices" id="memory"></div>`;memory.innerHTML=cards.map((c,i)=>`<button class="choice" data-k="${c.k}" data-v="${c.v}" onclick="flip(this)">❓</button>`).join('');window.flip=b=>{if(b.disabled)return;b.textContent=b.dataset.v;b.disabled=true;if(!first){first=b}else if(first.dataset.k===b.dataset.k){matched++;first=null;if(matched===3)win('記憶配對全部完成！')}else{const old=first;first=null;setTimeout(()=>{old.textContent='❓';b.textContent='❓';old.disabled=false;b.disabled=false},700)}}}
-function sentenceGame(){answer='I like apples.';const words=shuffle(['I','like','apples.']);gameArea.innerHTML=`<p class="feedback">依序點擊，排出正確句子</p><div class="choices">${words.map(w=>`<button class="choice" onclick="addWord(this,'${w}')">${w}</button>`).join('')}</div><div class="big-prompt" id="sentence" style="font-size:34px"></div><div style="text-align:center"><button class="primary" onclick="checkSentence()">檢查</button></div>`;window.built=[]}function addWord(b,w){built.push(w);sentence.textContent=built.join(' ');b.disabled=true}function checkSentence(){if(built.join(' ')===answer)win('句子火車順利出發！');else{built=[];startGame(5)}}
-function speedGame(){let count=0,time=30;function round(){const a=alphabet[Math.floor(Math.random()*alphabet.length)];answer=a[1];showGame(`${a[2]} 快速選答案！`,shuffle([answer,...pickWords(answer,2)]),answer);document.querySelectorAll('.choice').forEach(b=>b.onclick=()=>{if(b.textContent===answer){count++;state.correct++;state.coins+=2;save();round()}})}round();const t=setInterval(()=>{time--;if(document.getElementById('feedback'))feedback.textContent=`剩下 ${time} 秒｜答對 ${count} 題`;if(time<=0){clearInterval(t);state.stars+=count;save();openModal('⚡','時間到！',`你答對 ${count} 題，獲得 ${count} 顆星！`) }},1000)}
-function speakStory(){speak(stories[currentStory].text,.78);state.stories++;state.minutes+=3;save()}
-function nextStory(){currentStory=(currentStory+1)%stories.length;const s=stories[currentStory];storyTitle.textContent=s.title;storyPic.textContent=s.pic;storyText.textContent=s.text}
-function storyQuiz(){go('games');const s=stories[currentStory];answer=s.a;showGame(s.q,s.opts,s.a)}
-const badgeDefs=[['🌱','First Step','stars',5],['🔤','ABC Explorer','letters',10],['🎮','Game Hero','correct',10],['📚','Story Friend','stories',3],['⭐','Star Collector','stars',50],['🪙','Coin Master','coins',100],['🦊','Foxy’s Friend','correct',30],['👑','English Champion','stars',120]];
-function renderBadges(){badges.innerHTML=badgeDefs.map(b=>{const value=b[2]==='letters'?state.letters.length:state[b[2]];return `<div class="card badge ${value>=b[3]?'unlocked':''}"><div class="badge-icon">${b[0]}</div><h3>${b[1]}</h3><p>${value>=b[3]?'已解鎖！':value+' / '+b[3]}</p></div>`}).join('')}
-function dailyChest(){if(state.letters.length>=5&&state.correct>=1){state.coins+=30;save();openModal('🎁','寶箱打開了！','獲得 30 枚金幣！')}else openModal('🔒','寶箱還沒打開','先學 5 個字母，再答對 1 題遊戲。')}
-function openModal(icon,title,text){modalIcon.textContent=icon;modalTitle.textContent=title;modalText.textContent=text;modal.classList.add('open')}function closeModal(){modal.classList.remove('open')}function confetti(){for(let i=0;i<18;i++){const d=document.createElement('div');d.className='confetti';d.textContent=['⭐','🎉','✨','🟡'][i%4];d.style.left=Math.random()*100+'vw';d.style.top='-30px';d.style.animationDelay=Math.random()*.6+'s';document.body.appendChild(d);setTimeout(()=>d.remove(),2300)}}
+function esc(s){return String(s).replaceAll('\\','\\\\').replaceAll("'","\\'")}
+function startGame(type){round={score:0,n:0,type:type};
+  if(type===4)memoryGame();
+  else if(type===5)sentenceGame();
+  else if(type===7)speedGame();
+  else askNext();
+  document.getElementById('gameArea').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function header(){return `<div class="gbar"><span>第 ${Math.min(round.n+1,GOAL)} / ${GOAL} 題</span><span>⭐ 得分 ${round.score}</span></div>`}
+function askNext(){
+  if(round.n>=GOAL)return finishRound();
+  const t=round.type;
+  if(t===2){ // 拼字
+    const w=pick(spellPool),word=w[0];answer=word;
+    const scrambled=shuffle(word.split('')).join(' · ');
+    gameArea.innerHTML=header()+`<div class="big-prompt">${w[1]}<div style="font-size:30px;margin-top:8px">${scrambled}</div></div><p class="feedback" id="feedback">把字母排成正確的單字</p><div style="text-align:center"><input id="spell" autocomplete="off" autocapitalize="off" style="font-size:24px;padding:12px;border-radius:12px;border:2px solid #aac4ef"><br><button class="primary" style="margin-top:12px" onclick="submitSpell()">送出</button> <button class="primary" style="margin-top:12px;background:#eef" onclick="speak('${esc(word)}')">🔊 提示</button></div>`;
+    document.getElementById('spell').focus();return;
+  }
+  let prompt,opts,ans;
+  if(t===0){const a=pick(alphabet);ans=a[0].toLowerCase();prompt=`找出 <b>${a[0]}</b> 的小寫字母`;opts=shuffle([ans,...pickLetters(ans,3)])}
+  else if(t===1){const w=pick(wordBank);ans=w[0];prompt=`<div style="font-size:80px">${w[1]}</div>這是什麼？`;opts=shuffle([ans,...pickWords(ans,3)])}
+  else if(t===3){const w=pick(wordBank);ans=w[0];speak(ans);prompt=`👂 聽一聽，選出你聽到的單字<div style="font-size:40px;margin-top:6px">🔊</div>`;opts=shuffle([ans,...pickWords(ans,3)])}
+  else if(t===6){const s=pick(stories);ans=s.a;prompt=`📖 ${s.title}<div style="font-size:22px;margin-top:8px">${s.q}</div>`;opts=shuffle(s.opts)}
+  answer=ans;
+  gameArea.innerHTML=header()+`<div class="big-prompt" style="font-size:34px">${prompt}</div><div class="choices">${opts.map(o=>`<button class="choice" onclick="answerChoice(this,'${esc(o)}')">${o}</button>`).join('')}</div><p class="feedback" id="feedback">選一個答案</p>`;
+  if(t===3)setTimeout(()=>speak(ans),400);
+}
+function answerChoice(btn,val){
+  if(val===answer){
+    btn.classList.add('ok');beep('win');round.score++;round.n++;state.stars++;state.coins++;save();
+    document.getElementById('feedback').textContent=pick(praises);
+    document.querySelectorAll('#gameArea .choice').forEach(b=>b.disabled=true);
+    setTimeout(askNext,750);
+  }else{
+    btn.classList.add('no');btn.disabled=true;beep('lose');speak(answer);
+    document.getElementById('feedback').textContent='再試一次！聽聽看 🔊';
+  }
+}
+function submitSpell(){
+  const inp=document.getElementById('spell'),v=inp.value.trim().toLowerCase();
+  if(v===answer.toLowerCase()){beep('win');round.score++;round.n++;state.stars++;state.coins++;save();document.getElementById('feedback').textContent='拼對了！你很努力！ ✨';setTimeout(askNext,850)}
+  else{beep('lose');speak(answer);document.getElementById('feedback').textContent='差一點，再聽一次慢慢拼 🔊';inp.value='';inp.focus()}
+}
+function finishRound(){beep('win');confetti();gameArea.innerHTML=`<div class="big-prompt">🏆</div><p class="feedback">太棒了！這一輪你答對 <b>${round.score}</b> 題，得到 ⭐ ${round.score} 分！</p><div style="text-align:center;margin-top:10px"><button class="primary" onclick="startGame(${round.type})">再玩一次 🔁</button> <button class="primary" onclick="scrollTo({top:0,behavior:'smooth'})">選別的遊戲 🎮</button></div>`}
+
+// 記憶翻牌
+function memoryGame(){const pair=shuffle(wordBank).slice(0,3);const cards=shuffle(pair.flatMap(x=>[{k:x[0],v:x[0]},{k:x[0],v:x[1]}]));let first=null,matched=0,lock=false;
+  gameArea.innerHTML=`<div class="gbar"><span>🃏 記憶翻牌</span><span>配對 0 / 3</span></div><p class="feedback">翻出相同的「圖片」與「單字」</p><div class="choices" id="memory"></div>`;
+  memory.innerHTML=cards.map(c=>`<button class="choice" data-k="${c.k}" data-v="${c.v}" onclick="flip(this)">❓</button>`).join('');
+  window.flip=b=>{if(lock||b.disabled)return;b.textContent=b.dataset.v;
+    if(!first){first=b}
+    else if(first!==b&&first.dataset.k===b.dataset.k){beep('win');first.disabled=b.disabled=true;matched++;first=null;document.querySelector('.gbar span:last-child').textContent='配對 '+matched+' / 3';if(matched===3){state.stars+=2;state.coins+=2;save();celebrate('🃏','記憶配對全部完成！',5)}}
+    else{beep('lose');lock=true;const old=first;first=null;setTimeout(()=>{old.textContent='❓';b.textContent='❓';lock=false},700)}
+  }
+}
+// 句子火車（連續多句）
+let built=[],sIdx=0;
+function sentenceGame(){sIdx=0;nextSentence()}
+function nextSentence(){if(sIdx>=Math.min(4,sentences.length)){state.stars+=2;save();return celebrate('🚂','句子火車全部完成！',5)}
+  answer=sentences[sIdx];built=[];const words=shuffle(answer.split(' '));
+  gameArea.innerHTML=`<div class="gbar"><span>🚂 第 ${sIdx+1} 句</span><span>⭐ ${state.stars}</span></div><p class="feedback" id="feedback">依序點擊，排出正確句子</p><div class="choices">${words.map(w=>`<button class="choice" onclick="addWord(this,'${esc(w)}')">${w}</button>`).join('')}</div><div class="big-prompt" id="sentence" style="font-size:30px;min-height:40px"></div><div style="text-align:center"><button class="primary" onclick="checkSentence()">檢查 ✅</button> <button class="primary" style="background:#eef" onclick="built=[];sentence.textContent='';document.querySelectorAll('#gameArea .choice').forEach(b=>b.disabled=false)">重來 🔄</button></div>`;
+}
+function addWord(b,w){built.push(w);sentence.textContent=built.join(' ');b.disabled=true}
+function checkSentence(){if(built.join(' ')===answer){beep('win');speak(answer);state.coins++;save();document.getElementById('feedback').textContent='答對了！ 🎉';sIdx++;setTimeout(nextSentence,1100)}else{beep('lose');document.getElementById('feedback').textContent='順序不太對，按「重來」再試一次！';}}
+// 閃電挑戰
+function speedGame(){let count=0,time=30;
+  function r(){const w=pick(wordBank);answer=w[0];
+    gameArea.innerHTML=`<div class="gbar"><span id="timer">⏱️ 30 秒</span><span id="sc">答對 ${count}</span></div><div class="big-prompt">${w[1]}</div><div class="choices">${shuffle([w[0],...pickWords(w[0],2)]).map(o=>`<button class="choice" onclick="speedPick('${esc(o)}')">${o}</button>`).join('')}</div><p class="feedback">快速選出正確單字！</p>`;
+  }
+  window.speedPick=v=>{if(v===answer){beep('win');count++;state.stars++;state.coins++;save();const sc=document.getElementById('sc');if(sc)sc.textContent='答對 '+count;r()}else{beep('lose')}};
+  r();
+  const t=setInterval(()=>{time--;const tm=document.getElementById('timer');if(tm)tm.textContent='⏱️ '+time+' 秒';if(time<=0){clearInterval(t);celebrate('⚡','時間到！',0,`你答對了 ${count} 題，太厲害了！`)}},1000);
+}
+function celebrate(icon,title,coins,text){if(coins){state.coins+=coins;save()}openModal(icon,title,text||('獲得 🪙 '+coins+' 金幣！'));confetti()}
+
+// ===== 故事 =====
+let paused=false;
+function renderStory(){const s=stories[currentStory];storyTitle.textContent=s.title;storyPic.textContent=s.pic;let pos=0;storyText.innerHTML=s.text.split(' ').map(w=>{const sp=`<span class="w" data-o="${pos}">${w}</span>`;pos+=w.length+1;return sp}).join(' ')}
+function speakStory(rate){rate=rate||.8;const s=stories[currentStory];speechSynthesis.cancel();paused=false;updatePauseBtn();
+  const u=new SpeechSynthesisUtterance(s.text);u.lang='en-US';u.rate=rate;
+  const spans=[...storyText.querySelectorAll('.w')],offs=spans.map(x=>+x.dataset.o);
+  u.onboundary=e=>{if(e.name&&e.name!=='word')return;let idx=0;for(let i=0;i<offs.length;i++){if(e.charIndex>=offs[i])idx=i;else break}spans.forEach(x=>x.classList.remove('highlight'));if(spans[idx])spans[idx].classList.add('highlight')};
+  u.onend=()=>{spans.forEach(x=>x.classList.remove('highlight'));paused=false;updatePauseBtn()};
+  speechSynthesis.speak(u);
+}
+function togglePause(){if(speechSynthesis.speaking){if(paused){speechSynthesis.resume();paused=false}else{speechSynthesis.pause();paused=true}updatePauseBtn()}}
+function updatePauseBtn(){const b=document.getElementById('pauseBtn');if(b)b.textContent=paused?'▶️ 繼續':'⏸️ 暫停'}
+function stopStory(){speechSynthesis.cancel();paused=false;updatePauseBtn();storyText.querySelectorAll('.w').forEach(x=>x.classList.remove('highlight'))}
+function nextStory(){stopStory();currentStory=(currentStory+1)%stories.length;renderStory()}
+function prevStory(){stopStory();currentStory=(currentStory-1+stories.length)%stories.length;renderStory()}
+function storyQuiz(){go('games');startGame(6)}
+
+// ===== 彈窗 / 彩帶 =====
+function openModal(icon,title,text){modalIcon.textContent=icon;modalTitle.textContent=title;modalText.textContent=text;modal.classList.add('open')}
+function closeModal(){modal.classList.remove('open')}
+function confetti(){for(let i=0;i<18;i++){const d=document.createElement('div');d.className='confetti';d.textContent=['⭐','🎉','✨','🟡'][i%4];d.style.left=Math.random()*100+'vw';d.style.top='-30px';d.style.animationDelay=Math.random()*.6+'s';document.body.appendChild(d);setTimeout(()=>d.remove(),2300)}}
+
+// 回到頂端：自製平滑捲動（setInterval，任何手機/平板都保證有效）
+let topTimer=null;
+function goTop(){if(topTimer)clearInterval(topTimer);let y=window.scrollY||document.documentElement.scrollTop;if(y<=0)return;topTimer=setInterval(()=>{y=y-Math.max(40,y*0.22);if(y<=0){y=0;clearInterval(topTimer);topTimer=null}window.scrollTo(0,y)},16)}
+// 捲動時顯示「回到頂端」浮動鍵
+const toTopBtn=document.getElementById('toTop');
+addEventListener('scroll',()=>{toTopBtn.classList.toggle('show',(window.scrollY||document.documentElement.scrollTop)>320)},{passive:true});
+renderStory();
 renderStats();
 </script>
 </body>
